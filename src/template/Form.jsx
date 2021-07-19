@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Logo from './../template/Logo'
+import './Form.stylesheet.css'
 
 const Formulario = (props) => {
   const [nome, setNome] = useState("");
@@ -28,26 +30,23 @@ const Formulario = (props) => {
   }
 
   return (
-    <div>
-      <Form>
+    <>
+      <Logo />
+      <Form className="">
         <h2>Formulário de Contato</h2>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 col-md-12 col-lg-12 col-xl-12 col-sm-12">
           <Form.Label>Nome</Form.Label>
           <Form.Control
             type="text"
             placeholder="Seu nome"
             onChange={(e) => setNome(e.target.value)}
           ></Form.Control>
-        </Form.Group>
-        <Form.Group className="mb-3">
           <Form.Label>E-mail</Form.Label>
           <Form.Control
             type="email"
             placeholder="Seu e-mail"
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
-        </Form.Group>
-        <Form.Group className="mb-3">
           <Form.Label>Comentários</Form.Label>
           <Form.Control
             as="textarea"
@@ -55,12 +54,17 @@ const Formulario = (props) => {
             placeholder="Comentários se houver"
             onChange={(e) => setComent(e.target.value)}
           ></Form.Control>
-        </Form.Group>
-      </Form>
-      <Button variant="success" onClick={() => Submit(nome, email, coment)}>
+                <Button 
+                variant="success" 
+                onClick={() => Submit(nome, email, coment)}
+                className="mt-3"
+                id="button">
         <FontAwesomeIcon icon={faWhatsapp} /> Enviar via WhatsApp
       </Button>
-    </div>
+        </Form.Group>
+      </Form>
+
+    </>
   );
 };
 
