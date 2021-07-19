@@ -3,7 +3,6 @@ import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Logo from './../template/Logo'
-import './Form.stylesheet.css'
 
 const Formulario = (props) => {
   const [nome, setNome] = useState("");
@@ -34,11 +33,11 @@ const Formulario = (props) => {
       <Logo />
       <Form className="">
         <h2>Formulário de Contato</h2>
-        <Form.Group className="mb-3 col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <Form.Group className="mb-3 mt-3 col-md-12 col-lg-12 col-xl-12 col-sm-12">
           <Form.Label>Nome</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Seu nome"
+            placeholder="Seu nome"  
             onChange={(e) => setNome(e.target.value)}
           ></Form.Control>
           <Form.Label>E-mail</Form.Label>
