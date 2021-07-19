@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Logo from './../template/Logo'
+import Grid from './../template/grid'
 
 const Formulario = (props) => {
   const [nome, setNome] = useState("");
@@ -33,11 +34,12 @@ const Formulario = (props) => {
       <Logo />
       <Form className="">
         <h2>Formulário de Contato</h2>
-        <Form.Group className="mb-3 mt-3 col-md-12 col-lg-12 col-xl-12 col-sm-12">
+        <Grid cols='12 10 8'>
+        <Form.Group>
           <Form.Label>Nome</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Seu nome"  
+            placeholder="Seu nome"
             onChange={(e) => setNome(e.target.value)}
           ></Form.Control>
           <Form.Label>E-mail</Form.Label>
@@ -53,14 +55,15 @@ const Formulario = (props) => {
             placeholder="Comentários se houver"
             onChange={(e) => setComent(e.target.value)}
           ></Form.Control>
-                <Button 
-                variant="success" 
-                onClick={() => Submit(nome, email, coment)}
-                className="mt-3"
-                id="button">
-        <FontAwesomeIcon icon={faWhatsapp} /> Enviar via WhatsApp
-      </Button>
+          <Button
+            variant="success"
+            onClick={() => Submit(nome, email, coment)}
+            className="mt-3"
+            id="button">
+            <FontAwesomeIcon icon={faWhatsapp} /> Enviar via WhatsApp
+          </Button>
         </Form.Group>
+        </Grid>       
       </Form>
 
     </>
