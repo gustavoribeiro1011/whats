@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "./../template/Form";
-import { Container } from "react-bootstrap";
+//import Form from "./../template/Form";
+import Routes from "./routes";
 
-export default () => (
-  <Container>    
-    <Form />
-  </Container>
+export default (props) => (
+  <div className="container">
+    <Routes />
+  </div>
 );
