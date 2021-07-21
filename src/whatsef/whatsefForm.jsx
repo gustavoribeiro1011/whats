@@ -5,20 +5,18 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Form, Button } from "react-bootstrap";
 import Grid from "./../template/grid";
 
-export default props => (
-  
+export default (props) => (
   <Form onSubmit={props.handleSubmit}>
     <Grid cols="12 10 8">
       <Form.Group>
         <Form.Label>Nome</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Seu nome"          
+          placeholder="Seu nome"
           value={props.fields}
           onChange={props.handleChange.bind(this, "name")}
         ></Form.Control>
-        <Form.Text className="text-danger">
-        </Form.Text>
+        <Form.Text className="text-danger">{props.errors}</Form.Text>
       </Form.Group>
       <Form.Group>
         <Form.Label>E-mail</Form.Label>
@@ -28,6 +26,7 @@ export default props => (
           value={props.fields}
           onChange={props.handleChange.bind(this, "email")}
         ></Form.Control>
+        <Form.Text className="text-danger"></Form.Text>
       </Form.Group>
       <Form.Group>
         <Form.Label>Comentários</Form.Label>
@@ -39,14 +38,10 @@ export default props => (
         ></Form.Control>
       </Form.Group>
       <Form.Group>
-        <Button
-          variant="success"
-          className="mt-3"
-          type="submit"
-        >
+        <Button variant="success" className="mt-3" type="submit">
           <FontAwesomeIcon icon={faWhatsapp} /> Enviar via WhatsApp
         </Button>
       </Form.Group>
     </Grid>
   </Form>
-)
+);
