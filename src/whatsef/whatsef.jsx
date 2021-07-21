@@ -106,7 +106,7 @@ export default class Whatsef extends Component {
     return (
       <div>
         <Logo />
-        <PageHeader name="@" />
+        <PageHeader name="Formulário de Contato" />
         <WhatsefForm
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange
