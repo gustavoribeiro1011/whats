@@ -25,7 +25,31 @@ export default class Whatsef extends Component {
     if (!fields["name"]) {
       //se "name" nao existir
       formIsValid = false; // formulario nao é valido
-      errors["name"] = "Este campo é requirido"; //grava a msg de erro
+      errors["name"] = "Campo obrigatório"; //grava a msg de erro
+    }
+
+    //Email
+    if (!fields["email"]) {
+      formIsValid = false;
+      errors["email"] = "Campo obrigatório";
+    }
+
+    if (typeof fields["email"] !== "undefined") {
+      let lastAtPos = fields["email"].lastIndexOf("@");
+      let lastDotPos = fields["email"].lastIndexOf(".");
+
+      if (
+        !(
+          lastAtPos < lastDotPos &&
+          lastAtPos > 0 &&
+          fields["email"].indexOf("@@") === -1 &&
+          lastDotPos > 2 &&
+          fields["email"].length - lastDotPos > 2
+        )
+      ) {
+        formIsValid = false;
+        errors["email"] = "Digite um e-mail válido";
+      }
     }
 
     this.setState({ errors: errors });
@@ -48,8 +72,7 @@ export default class Whatsef extends Component {
     e.preventDefault();
     if (this.handleValidation()) {
       alert("Formulário enviado");
-    } else {
-      alert("Formulário contém erros.");
+      //chamar a api do whatsapp
     }
   }
 
@@ -58,8 +81,6 @@ export default class Whatsef extends Component {
       <div>
         <Logo />
         <PageHeader name="@" />
-        error['name']: {this.state.errors["name"]} <br />
-        error['email']: {this.state.errors["email"]}
         <WhatsefForm
           handleSubmit={this.handleSubmit.bind(this)}
           handleChange={this.handleChange
@@ -67,7 +88,7 @@ export default class Whatsef extends Component {
             .bind("email")
             .bind("coments")}
           fields={this.state.handleSubmit}
-          errors={this.state.errors["name"]}
+          errors={this.state.errors}
           // errors={this.handleError.bind("name")}
         />
       </div>

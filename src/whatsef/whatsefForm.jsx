@@ -16,7 +16,7 @@ export default (props) => (
           value={props.fields}
           onChange={props.handleChange.bind(this, "name")}
         ></Form.Control>
-        <Form.Text className="text-danger">{props.errors}</Form.Text>
+        <Form.Text className="text-danger">{props.errors["name"]}</Form.Text>
       </Form.Group>
       <Form.Group>
         <Form.Label>E-mail</Form.Label>
@@ -26,7 +26,7 @@ export default (props) => (
           value={props.fields}
           onChange={props.handleChange.bind(this, "email")}
         ></Form.Control>
-        <Form.Text className="text-danger"></Form.Text>
+        <Form.Text className="text-danger">{props.errors["email"]}</Form.Text>
       </Form.Group>
       <Form.Group>
         <Form.Label>Comentários</Form.Label>
