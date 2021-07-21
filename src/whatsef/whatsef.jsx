@@ -51,6 +51,10 @@ export default class Whatsef extends Component {
       }
     }
 
+    if (!fields["comments"]) {
+      fields["comments"] = "";     
+    }
+
     this.setState({ errors: errors });
     return formIsValid;
   }
@@ -68,7 +72,7 @@ export default class Whatsef extends Component {
     let comments = this.state.fields["comments"];
 
     //Api
-    let mobile = "+5543996262702";
+    let mobile = "+55043996262702";
 
     //Message
     let title = "Demonstração de Formulário de Contato";
@@ -88,7 +92,7 @@ export default class Whatsef extends Component {
 
     //Redirect to WhatsApp
     window.open(
-      "https://wa.me//send?phone=" + mobile + "&text=" + text,
+      "https://api.whatsapp.com/send?phone=" + mobile + "&text=" + text,
       "_blank"
     );
   }
