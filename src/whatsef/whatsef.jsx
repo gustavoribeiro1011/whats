@@ -88,7 +88,7 @@ export default class Whatsef extends Component {
 
     //Redirect to WhatsApp
     window.open(
-      "https://web.whatsapp.com/send?phone=" + mobile + "&text=" + text,
+      "https://wa.me//send?phone=" + mobile + "&text=" + text,
       "_blank"
     );
   }
