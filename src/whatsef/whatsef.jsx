@@ -11,7 +11,6 @@ export default class Whatsef extends Component {
       fields: {},
       errors: {}
     };
-    this.handleError = this.handleError.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -62,17 +61,44 @@ export default class Whatsef extends Component {
     this.setState({ fields });
   }
 
-  handleError(error, e) {
-    let errors = this.state.fields;
-    errors[error] = e.target.value;
-    this.setState({ errors });
+  redirect() {
+    //Form
+    let name = this.state.fields["name"];
+    let email = this.state.fields["email"];
+    let comments = this.state.fields["comments"];
+
+    //Api
+    let mobile = "+5543996262702";
+
+    //Message
+    let title = "Demonstração de Formulário de Contato";
+
+    let text = (
+      title +
+      "%0A%0A" +
+      "Nome: " +
+      name +
+      "%0A" +
+      "E-mail: " +
+      email +
+      "%0A" +
+      "Comentários: " +
+      comments
+    ).replace(" ", "%20");
+
+    //Redirect to WhatsApp
+    window.open(
+      "https://web.whatsapp.com/send?phone=" + mobile + "&text=" + text,
+      "_blank"
+    );
   }
 
   handleSubmit(e) {
     e.preventDefault();
     if (this.handleValidation()) {
-      alert("Formulário enviado");
+      //alert("Formulário enviado");
       //chamar a api do whatsapp
+      this.redirect();
     }
   }
 
@@ -86,7 +112,7 @@ export default class Whatsef extends Component {
           handleChange={this.handleChange
             .bind("name")
             .bind("email")
-            .bind("coments")}
+            .bind("comments")}
           fields={this.state.handleSubmit}
           errors={this.state.errors}
           // errors={this.handleError.bind("name")}

@@ -34,6 +34,7 @@ export default (props) => (
           as="textarea"
           rows={3}
           placeholder="Comentários se houver"
+          value={props.fields}
           onChange={props.handleChange.bind(this, "comments")}
         ></Form.Control>
       </Form.Group>
