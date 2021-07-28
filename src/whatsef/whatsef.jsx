@@ -1,41 +1,48 @@
-import React, { Component } from "react";
+import { React, useRef, useState, Component } from "react"
 
-import PageHeader from "./../template/pageHeader";
-import Logo from "./../template/Logo";
-import WhatsefForm from "./whatsefForm";
+//Import Template
+import PageHeader from "./../template/pageHeader"
+import Logo from "./../template/Logo"
+import WhatsefForm from "./whatsefForm"
+import NavBar from "../template/NavBar"
+
+//Import Css
+import './custom.css'
+
 
 export default class Whatsef extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       fields: {},
       errors: {}
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleValidation() {
-    let fields = this.state.fields;
-    let errors = {};
-    let formIsValid = true;
+    let fields = this.state.fields
+    let errors = {}
+    let formIsValid = true
 
     //Name
     if (!fields["name"]) {
       //se "name" nao existir
-      formIsValid = false; // formulario nao é valido
-      errors["name"] = "Campo obrigatório"; //grava a msg de erro
+      formIsValid = false // formulario nao é valido
+      errors["name"] = "Campo obrigatório" //grava a msg de erro
     }
 
     //Email
     if (!fields["email"]) {
-      formIsValid = false;
-      errors["email"] = "Campo obrigatório";
+      formIsValid = false
+      errors["email"] = "Campo obrigatório"
     }
 
     if (typeof fields["email"] !== "undefined") {
-      let lastAtPos = fields["email"].lastIndexOf("@");
-      let lastDotPos = fields["email"].lastIndexOf(".");
+      let lastAtPos = fields["email"].lastIndexOf("@")
+      let lastDotPos = fields["email"].lastIndexOf(".")
 
       if (
         !(
@@ -46,23 +53,23 @@ export default class Whatsef extends Component {
           fields["email"].length - lastDotPos > 2
         )
       ) {
-        formIsValid = false;
-        errors["email"] = "Digite um e-mail válido";
+        formIsValid = false
+        errors["email"] = "Digite um e-mail válido"
       }
     }
 
     if (!fields["comments"]) {
-      fields["comments"] = "";     
+      fields["comments"] = ""
     }
 
-    this.setState({ errors: errors });
-    return formIsValid;
+    this.setState({ errors: errors })
+    return formIsValid
   }
 
   handleChange(field, e) {
-    let fields = this.state.fields;
-    fields[field] = e.target.value;
-    this.setState({ fields });
+    let fields = this.state.fields
+    fields[field] = e.target.value
+    this.setState({ fields })
   }
 
   redirect() {
@@ -98,30 +105,38 @@ export default class Whatsef extends Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     if (this.handleValidation()) {
-      //alert("Formulário enviado");
+      //alert("Formulário enviado")
       //chamar a api do whatsapp
-      this.redirect();
+      this.redirect()
     }
   }
 
+  Message(props) {
+    const { text } = props.message
+    return <p>{text}</p>
+  }
+
+
   render() {
-    return (
-      <div>
-        <Logo />
-        <PageHeader name="Formulário de Contato" />
-        <WhatsefForm
-          handleSubmit={this.handleSubmit.bind(this)}
-          handleChange={this.handleChange
-            .bind("name")
-            .bind("email")
-            .bind("comments")}
-          fields={this.state.handleSubmit}
-          errors={this.state.errors}
-          // errors={this.handleError.bind("name")}
-        />
-      </div>
-    );
+    return (  <>      
+      <NavBar />
+           <div id="App">
+           <Logo />
+            <PageHeader name="Formulário de Contato" />
+            <WhatsefForm
+              handleSubmit={this.handleSubmit.bind(this)}
+              handleChange={this.handleChange
+                .bind("name")
+                .bind("email")
+                .bind("comments")}
+              fields={this.state.handleSubmit}
+              errors={this.state.errors}
+            // errors={this.handleError.bind("name")}
+            />
+           </div>
+           </>
+    )
   }
 }
