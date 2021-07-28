@@ -39,7 +39,7 @@ export function SignOut() {
 function App() {
   const [user] = useAuthState(auth)
   return (
-    <div className="container">
+    <div>
 
       {user ? <Routes /> : <SigIn />}
     </div>

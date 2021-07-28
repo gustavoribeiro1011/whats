@@ -9,9 +9,9 @@ import Button from "./../template/Button"
 
 export default (props) => (
 
-  <div class="container">
-    <div class="row">
-      <div class="col"></div>
+  <div className="container">
+    <div className="row">
+      <div className="col"></div>
       <Grid cols="12 5 4">
         <Form onSubmit={props.handleSubmit} id="Form">
           <Form.Group>
@@ -55,7 +55,7 @@ export default (props) => (
 
         </Form>
         </Grid>
-      <div class="col"></div>
+      <div className="col"></div>
     </div>
   </div>
 
