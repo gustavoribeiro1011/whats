@@ -9,6 +9,11 @@ import NavBar from "../template/NavBar"
 //Import Css
 import './custom.css'
 
+import {sendMessage} from './../main/app'
+
+
+
+
 
 export default class Whatsef extends Component {
   constructor(props) {
@@ -72,11 +77,14 @@ export default class Whatsef extends Component {
     this.setState({ fields })
   }
 
+   
   redirect() {
     //Form
     let name = this.state.fields["name"];
     let email = this.state.fields["email"];
     let comments = this.state.fields["comments"];
+
+    sendMessage(name,email,comments)
 
     //Api
     let mobile = "+55043996262702";

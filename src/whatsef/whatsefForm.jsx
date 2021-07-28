@@ -7,8 +7,9 @@ import { Form } from "react-bootstrap"
 import Grid from "./../template/grid"
 import Button from "./../template/Button"
 
-export default (props) => (
+import { sendMessage } from './../main/app'
 
+export default (props) => (
   <div className="container">
     <div className="row">
       <div className="col"></div>
@@ -50,11 +51,11 @@ export default (props) => (
             <Button name="Enviar via WhatsApp" type="submit" icon={faWhatsapp} />
           </Form.Group>
           <Form.Group>
-            <Button name="Gravar no BD" icon={faDatabase} />
+            <Button name="Gravar no BD" icon={faDatabase} onClick={sendMessage} />
           </Form.Group>
 
         </Form>
-        </Grid>
+      </Grid>
       <div className="col"></div>
     </div>
   </div>

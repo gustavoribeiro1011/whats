@@ -5,8 +5,12 @@ import Routes from "./routes"
 
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore';
+
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -21,6 +25,8 @@ firebase.initializeApp({
 })
 
 const auth = firebase.auth()
+const firestore = firebase.firestore();
+const messagesRef = firestore.collection('messages');
 
 function SigIn() {
   const signInWithGoogle = () => {
@@ -34,6 +40,18 @@ function SigIn() {
 
 export function SignOut() {
   return auth.currentUser && auth.signOut()  
+}
+
+export  async function sendMessage(name,email,comments) {
+
+  const { uid } = auth.currentUser;
+
+  await messagesRef.add({
+    name: name,
+    email:email,
+    comments:comments,
+    uid
+    })    
 }
 
 function App() {
