@@ -12,6 +12,10 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { faGlassMartiniAlt } from '@fortawesome/free-solid-svg-icons'
 
+import Button from "./../template/Button"
+import { faGoogle } from "@fortawesome/free-brands-svg-icons"
+
+
 
 
 firebase.initializeApp({
@@ -34,7 +38,9 @@ function SigIn() {
     auth.signInWithPopup(provider)
   }
   return (
-    <button onClick={signInWithGoogle}>Entrar com Google</button>
+    <div id="Sign">
+       <Button name="Entrar com Google" type="button" icon={faGoogle} onClick={signInWithGoogle} />
+           </div>
   )
 }
 

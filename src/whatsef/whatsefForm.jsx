@@ -13,7 +13,7 @@ export default (props) => (
   <div className="container">
     <div className="row">
       <div className="col"></div>
-      <Grid cols="12 5 4">
+      <Grid cols="12 10 9 5">
         <Form onSubmit={props.handleSubmit} id="Form">
           <Form.Group>
             <Form.Label>Nome</Form.Label>
@@ -46,13 +46,9 @@ export default (props) => (
             ></Form.Control>
           </Form.Group>
 
-
           <Form.Group>
             <Button name="Enviar via WhatsApp" type="submit" icon={faWhatsapp} />
-          </Form.Group>
-          <Form.Group>
-            <Button name="Gravar no BD" icon={faDatabase} onClick={sendMessage} />
-          </Form.Group>
+          </Form.Group>        
 
         </Form>
       </Grid>

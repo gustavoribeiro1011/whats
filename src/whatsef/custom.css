@@ -1,17 +1,49 @@
-body{
+body{ 
   Font-family: Roboto;
-  font-weight: 100;
+  font-weight: 100;   
 }
 
 #App{
+  background-size: cover;
+    height: auto;
   flex:1;
   text-align: center;
   background-color: white;
- 
 }
 
 #Form{
+  background-color:  #f9f4f4;
+  padding: 30px 30px 30px 30px;
+  border-radius:10px;  
   flex:1;
   text-align: left;
+  width:3
   
+}
+
+#Sign{
+text-align: center;
+padding-top: 50px;
+width: 100vw;
+height: 100vh;
+background: #6C7A89;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center
+}
+#Sign button{
+  background-color: green;
+  width:200px;
+  
+}
+
+#Page-Header{
+color:#fff;  
+}
+
+@media only screen and (max-width: 600px) {
+  #App{
+    padding-top: 0;  
+  }
 }
